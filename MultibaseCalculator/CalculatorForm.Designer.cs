@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace MultibaseCalculator
 {
-    partial class Form1
+    partial class CalculatorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -62,7 +62,7 @@ namespace MultibaseCalculator
             this.btnCloseBracket = new System.Windows.Forms.Button();
             this.btnOpenBracket = new System.Windows.Forms.Button();
             this.labelMemEnabled = new System.Windows.Forms.Label();
-            this.labelBaseNumber = new System.Windows.Forms.Label();
+            this.domainRadix = new System.Windows.Forms.DomainUpDown();
             this.SuspendLayout();
             // 
             // inputBox
@@ -71,14 +71,15 @@ namespace MultibaseCalculator
             this.inputBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.inputBox.Enabled = false;
             this.inputBox.Font = new System.Drawing.Font("Arial Caps", 10.25F);
-            this.inputBox.Location = new System.Drawing.Point(58, 9);
+            this.inputBox.Location = new System.Drawing.Point(82, 9);
             this.inputBox.Name = "inputBox";
             this.inputBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.inputBox.Size = new System.Drawing.Size(178, 23);
+            this.inputBox.Size = new System.Drawing.Size(154, 23);
             this.inputBox.TabIndex = 0;
             this.inputBox.Text = "0";
             this.inputBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.inputBox.WordWrap = false;
+            this.inputBox.TextChanged += new System.EventHandler(this.inputBox_TextChanged);
             // 
             // btnBackspace
             // 
@@ -96,6 +97,7 @@ namespace MultibaseCalculator
             // btn1
             // 
             this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn1.Location = new System.Drawing.Point(58, 125);
             this.btn1.Name = "btn1";
@@ -109,6 +111,7 @@ namespace MultibaseCalculator
             // btn2
             // 
             this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn2.Location = new System.Drawing.Point(104, 125);
             this.btn2.Name = "btn2";
@@ -122,6 +125,7 @@ namespace MultibaseCalculator
             // btn3
             // 
             this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn3.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn3.Location = new System.Drawing.Point(150, 125);
             this.btn3.Name = "btn3";
@@ -135,6 +139,7 @@ namespace MultibaseCalculator
             // btn4
             // 
             this.btn4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn4.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn4.Location = new System.Drawing.Point(58, 96);
             this.btn4.Name = "btn4";
@@ -148,6 +153,7 @@ namespace MultibaseCalculator
             // btn5
             // 
             this.btn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn5.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn5.Location = new System.Drawing.Point(104, 96);
             this.btn5.Name = "btn5";
@@ -161,6 +167,7 @@ namespace MultibaseCalculator
             // btn6
             // 
             this.btn6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn6.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn6.Location = new System.Drawing.Point(150, 96);
             this.btn6.Name = "btn6";
@@ -174,6 +181,7 @@ namespace MultibaseCalculator
             // btn7
             // 
             this.btn7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn7.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn7.Location = new System.Drawing.Point(58, 67);
             this.btn7.Name = "btn7";
@@ -187,6 +195,7 @@ namespace MultibaseCalculator
             // btn8
             // 
             this.btn8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn8.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn8.Location = new System.Drawing.Point(104, 67);
             this.btn8.Name = "btn8";
@@ -201,7 +210,7 @@ namespace MultibaseCalculator
             // 
             this.btnMemClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemClear.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnMemClear.Location = new System.Drawing.Point(12, 154);
+            this.btnMemClear.Location = new System.Drawing.Point(14, 154);
             this.btnMemClear.Name = "btnMemClear";
             this.btnMemClear.Size = new System.Drawing.Size(40, 23);
             this.btnMemClear.TabIndex = 15;
@@ -213,6 +222,7 @@ namespace MultibaseCalculator
             // btn9
             // 
             this.btn9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn9.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn9.Location = new System.Drawing.Point(150, 67);
             this.btn9.Name = "btn9";
@@ -226,8 +236,9 @@ namespace MultibaseCalculator
             // btnFlip
             // 
             this.btnFlip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFlip.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btnFlip.Location = new System.Drawing.Point(150, 38);
+            this.btnFlip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFlip.ForeColor = System.Drawing.Color.Fuchsia;
+            this.btnFlip.Location = new System.Drawing.Point(58, 38);
             this.btnFlip.Name = "btnFlip";
             this.btnFlip.Size = new System.Drawing.Size(40, 23);
             this.btnFlip.TabIndex = 5;
@@ -240,7 +251,7 @@ namespace MultibaseCalculator
             // 
             this.btnMemAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemAdd.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnMemAdd.Location = new System.Drawing.Point(12, 67);
+            this.btnMemAdd.Location = new System.Drawing.Point(14, 96);
             this.btnMemAdd.Name = "btnMemAdd";
             this.btnMemAdd.Size = new System.Drawing.Size(40, 23);
             this.btnMemAdd.TabIndex = 12;
@@ -253,7 +264,7 @@ namespace MultibaseCalculator
             // 
             this.btnMemMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemMin.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnMemMin.Location = new System.Drawing.Point(12, 96);
+            this.btnMemMin.Location = new System.Drawing.Point(14, 67);
             this.btnMemMin.Name = "btnMemMin";
             this.btnMemMin.Size = new System.Drawing.Size(40, 23);
             this.btnMemMin.TabIndex = 13;
@@ -266,7 +277,7 @@ namespace MultibaseCalculator
             // 
             this.btnMemRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemRestore.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnMemRestore.Location = new System.Drawing.Point(12, 125);
+            this.btnMemRestore.Location = new System.Drawing.Point(14, 125);
             this.btnMemRestore.Name = "btnMemRestore";
             this.btnMemRestore.Size = new System.Drawing.Size(40, 23);
             this.btnMemRestore.TabIndex = 14;
@@ -278,6 +289,7 @@ namespace MultibaseCalculator
             // btn0
             // 
             this.btn0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn0.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btn0.Location = new System.Drawing.Point(58, 154);
             this.btn0.Name = "btn0";
@@ -291,6 +303,7 @@ namespace MultibaseCalculator
             // btnEvaluate
             // 
             this.btnEvaluate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEvaluate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnEvaluate.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnEvaluate.Location = new System.Drawing.Point(150, 154);
             this.btnEvaluate.Name = "btnEvaluate";
@@ -304,6 +317,7 @@ namespace MultibaseCalculator
             // btnDot
             // 
             this.btnDot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDot.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnDot.Location = new System.Drawing.Point(104, 154);
             this.btnDot.Name = "btnDot";
@@ -316,10 +330,9 @@ namespace MultibaseCalculator
             // 
             // btnCE
             // 
-            this.btnCE.Enabled = false;
             this.btnCE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCE.ForeColor = System.Drawing.Color.Red;
-            this.btnCE.Location = new System.Drawing.Point(58, 38);
+            this.btnCE.Location = new System.Drawing.Point(196, 38);
             this.btnCE.Name = "btnCE";
             this.btnCE.Size = new System.Drawing.Size(40, 23);
             this.btnCE.TabIndex = 3;
@@ -331,8 +344,9 @@ namespace MultibaseCalculator
             // btnSign
             // 
             this.btnSign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSign.ForeColor = System.Drawing.Color.Magenta;
-            this.btnSign.Location = new System.Drawing.Point(242, 125);
+            this.btnSign.Location = new System.Drawing.Point(104, 38);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(40, 23);
             this.btnSign.TabIndex = 7;
@@ -344,8 +358,9 @@ namespace MultibaseCalculator
             // btnPower
             // 
             this.btnPower.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnPower.ForeColor = System.Drawing.Color.Magenta;
-            this.btnPower.Location = new System.Drawing.Point(242, 96);
+            this.btnPower.Location = new System.Drawing.Point(150, 38);
             this.btnPower.Name = "btnPower";
             this.btnPower.Size = new System.Drawing.Size(40, 23);
             this.btnPower.TabIndex = 6;
@@ -357,8 +372,8 @@ namespace MultibaseCalculator
             // btnSqrt
             // 
             this.btnSqrt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSqrt.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btnSqrt.Location = new System.Drawing.Point(104, 38);
+            this.btnSqrt.ForeColor = System.Drawing.Color.Fuchsia;
+            this.btnSqrt.Location = new System.Drawing.Point(14, 38);
             this.btnSqrt.Name = "btnSqrt";
             this.btnSqrt.Size = new System.Drawing.Size(40, 23);
             this.btnSqrt.TabIndex = 4;
@@ -371,7 +386,7 @@ namespace MultibaseCalculator
             // 
             this.btnC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnC.ForeColor = System.Drawing.Color.Red;
-            this.btnC.Location = new System.Drawing.Point(12, 38);
+            this.btnC.Location = new System.Drawing.Point(242, 38);
             this.btnC.Name = "btnC";
             this.btnC.Size = new System.Drawing.Size(40, 23);
             this.btnC.TabIndex = 2;
@@ -383,8 +398,9 @@ namespace MultibaseCalculator
             // btnDivide
             // 
             this.btnDivide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDivide.ForeColor = System.Drawing.Color.Magenta;
-            this.btnDivide.Location = new System.Drawing.Point(196, 125);
+            this.btnDivide.Location = new System.Drawing.Point(242, 125);
             this.btnDivide.Name = "btnDivide";
             this.btnDivide.Size = new System.Drawing.Size(40, 23);
             this.btnDivide.TabIndex = 11;
@@ -396,34 +412,37 @@ namespace MultibaseCalculator
             // btnMultiply
             // 
             this.btnMultiply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMultiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnMultiply.ForeColor = System.Drawing.Color.Magenta;
-            this.btnMultiply.Location = new System.Drawing.Point(196, 67);
+            this.btnMultiply.Location = new System.Drawing.Point(242, 96);
             this.btnMultiply.Name = "btnMultiply";
             this.btnMultiply.Size = new System.Drawing.Size(40, 23);
             this.btnMultiply.TabIndex = 9;
             this.btnMultiply.TabStop = false;
-            this.btnMultiply.Text = "*";
+            this.btnMultiply.Text = "x";
             this.btnMultiply.UseVisualStyleBackColor = true;
             this.btnMultiply.Click += new System.EventHandler(this.btnMultiply_Click);
             // 
             // btnMinus
             // 
             this.btnMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnMinus.ForeColor = System.Drawing.Color.Magenta;
-            this.btnMinus.Location = new System.Drawing.Point(196, 96);
+            this.btnMinus.Location = new System.Drawing.Point(196, 125);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(40, 23);
             this.btnMinus.TabIndex = 10;
             this.btnMinus.TabStop = false;
-            this.btnMinus.Text = "-";
+            this.btnMinus.Text = "—";
             this.btnMinus.UseVisualStyleBackColor = true;
             this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             // 
             // btnPlus
             // 
             this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnPlus.ForeColor = System.Drawing.Color.Magenta;
-            this.btnPlus.Location = new System.Drawing.Point(196, 38);
+            this.btnPlus.Location = new System.Drawing.Point(196, 96);
             this.btnPlus.Name = "btnPlus";
             this.btnPlus.Size = new System.Drawing.Size(40, 23);
             this.btnPlus.TabIndex = 8;
@@ -435,6 +454,7 @@ namespace MultibaseCalculator
             // btnCloseBracket
             // 
             this.btnCloseBracket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseBracket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCloseBracket.ForeColor = System.Drawing.Color.Magenta;
             this.btnCloseBracket.Location = new System.Drawing.Point(242, 67);
             this.btnCloseBracket.Name = "btnCloseBracket";
@@ -448,8 +468,9 @@ namespace MultibaseCalculator
             // btnOpenBracket
             // 
             this.btnOpenBracket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenBracket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnOpenBracket.ForeColor = System.Drawing.Color.Magenta;
-            this.btnOpenBracket.Location = new System.Drawing.Point(242, 38);
+            this.btnOpenBracket.Location = new System.Drawing.Point(196, 67);
             this.btnOpenBracket.Name = "btnOpenBracket";
             this.btnOpenBracket.Size = new System.Drawing.Size(40, 23);
             this.btnOpenBracket.TabIndex = 29;
@@ -461,29 +482,37 @@ namespace MultibaseCalculator
             // labelMemEnabled
             // 
             this.labelMemEnabled.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelMemEnabled.Location = new System.Drawing.Point(12, 14);
+            this.labelMemEnabled.Location = new System.Drawing.Point(52, 9);
             this.labelMemEnabled.MinimumSize = new System.Drawing.Size(24, 15);
             this.labelMemEnabled.Name = "labelMemEnabled";
-            this.labelMemEnabled.Size = new System.Drawing.Size(24, 15);
+            this.labelMemEnabled.Size = new System.Drawing.Size(24, 23);
             this.labelMemEnabled.TabIndex = 30;
             this.labelMemEnabled.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // labelBaseNumber
+            // domainRadix
             // 
-            this.labelBaseNumber.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelBaseNumber.Location = new System.Drawing.Point(33, 14);
-            this.labelBaseNumber.MinimumSize = new System.Drawing.Size(21, 15);
-            this.labelBaseNumber.Name = "labelBaseNumber";
-            this.labelBaseNumber.Size = new System.Drawing.Size(21, 15);
-            this.labelBaseNumber.TabIndex = 31;
-            this.labelBaseNumber.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.domainRadix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.domainRadix.Items.Add("10");
+            this.domainRadix.Items.Add("9");
+            this.domainRadix.Items.Add("8");
+            this.domainRadix.Items.Add("7");
+            this.domainRadix.Items.Add("6");
+            this.domainRadix.Items.Add("5");
+            this.domainRadix.Items.Add("4");
+            this.domainRadix.Items.Add("3");
+            this.domainRadix.Items.Add("2");
+            this.domainRadix.Location = new System.Drawing.Point(14, 8);
+            this.domainRadix.Name = "domainRadix";
+            this.domainRadix.Size = new System.Drawing.Size(32, 20);
+            this.domainRadix.TabIndex = 32;
+            this.domainRadix.SelectedItemChanged += new System.EventHandler(this.domainRadix_SelectedItemChanged);
             // 
-            // Form1
+            // CalculatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 187);
-            this.Controls.Add(this.labelBaseNumber);
+            this.ClientSize = new System.Drawing.Size(296, 188);
+            this.Controls.Add(this.domainRadix);
             this.Controls.Add(this.labelMemEnabled);
             this.Controls.Add(this.btnOpenBracket);
             this.Controls.Add(this.btnCloseBracket);
@@ -515,9 +544,9 @@ namespace MultibaseCalculator
             this.Controls.Add(this.btn1);
             this.Controls.Add(this.btnBackspace);
             this.Controls.Add(this.inputBox);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.KeyPress += new KeyPressEventHandler(this.Form1_KeyPress);
+            this.Name = "CalculatorForm";
+            this.Text = "Multibase Calculator";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -556,6 +585,6 @@ namespace MultibaseCalculator
         private Button btnCloseBracket;
         private Button btnOpenBracket;
         private Label labelMemEnabled;
-        private Label labelBaseNumber;
+        private DomainUpDown domainRadix;
     }
 }
